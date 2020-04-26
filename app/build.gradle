@@ -39,7 +39,7 @@ dependencies {
 
     // Volley library
     implementation 'com.android.volley:volley:1.1.1'
-    
+
     // Arc loader library
     implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
 
