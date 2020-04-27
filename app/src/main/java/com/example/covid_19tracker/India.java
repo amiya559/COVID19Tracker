@@ -1,10 +1,12 @@
 package com.example.covid_19tracker;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ScrollView;
 import android.widget.TextView;
@@ -23,10 +25,10 @@ import org.eazegraph.lib.models.PieModel;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class India extends AppCompatActivity {
 
     // Connecting XML file with its corresponding JAVA file by initializing the object
-    TextView tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths,tvAffectedCountries;
+    TextView tvCases,tvRecovered,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths;
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
     PieChart pieChart;
@@ -34,27 +36,36 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_india);
+
+        getSupportActionBar().setTitle("COVID-19 INDIA");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
-        tvCritical = findViewById(R.id.tvCritical);
         tvActive = findViewById(R.id.tvActive);
         tvTodayCases = findViewById(R.id.tvTodayCases);
         tvTotalDeaths = findViewById(R.id.tvTotalDeaths);
         tvTodayDeaths = findViewById(R.id.tvTodayDeaths);
-        tvAffectedCountries = findViewById(R.id.tvAffectedCountries);
 
         simpleArcLoader = findViewById(R.id.loader);
         scrollView = findViewById(R.id.scrollStats);
-        pieChart = findViewById(R.id.piechart);
+        pieChart = findViewById(R.id.piechartIndia);
 
         fetchdata();
     }
 
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home)
+            finish();
+        return super.onOptionsItemSelected(item);
+    }
+
     private void fetchdata() {
 
-        String url = "https://corona.lmao.ninja/v2/all";
+        String url = "https://corona.lmao.ninja/v2/countries/India";
 
         simpleArcLoader.start();
 
@@ -67,12 +78,10 @@ public class MainActivity extends AppCompatActivity {
 
                             tvCases.setText(jsonObject.getString("cases"));
                             tvRecovered.setText(jsonObject.getString("recovered"));
-                            tvCritical.setText(jsonObject.getString("critical"));
                             tvActive.setText(jsonObject.getString("active"));
                             tvTodayCases.setText(jsonObject.getString("todayCases"));
                             tvTotalDeaths.setText(jsonObject.getString("deaths"));
                             tvTodayDeaths.setText(jsonObject.getString("todayDeaths"));
-                            tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
 
 
                             pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
@@ -84,9 +93,6 @@ public class MainActivity extends AppCompatActivity {
                             simpleArcLoader.stop();
                             simpleArcLoader.setVisibility(View.GONE);
                             scrollView.setVisibility(View.VISIBLE);
-
-
-
 
 
                         } catch (JSONException e) {
@@ -104,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 simpleArcLoader.stop();
                 simpleArcLoader.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
-                Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(India.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -113,15 +119,5 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void goTrackIndia(View view) {
 
-        startActivity(new Intent(getApplicationContext(), India.class));
-
-    }
-
-    public void goTrackOtherCountries(View view) {
-
-        startActivity(new Intent(getApplicationContext(), AffectedCountries.class));
-
-    }
 }

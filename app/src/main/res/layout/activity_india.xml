@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_white"
-    tools:context=".MainActivity">
+    tools:context=".India">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
-        android:layout_height="170dp"
+        android:layout_height="180dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
@@ -23,9 +23,10 @@
             android:orientation="horizontal"
             android:weightSum="2">
 
+
             <org.eazegraph.lib.charts.PieChart
                 xmlns:app="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/piechart"
+                android:id="@+id/piechartIndia"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:padding="6dp"
@@ -119,19 +120,19 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="250dp"
+        android:layout_height="fill_parent"
         android:layout_below="@+id/cardViewGraph"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="30dp"
         android:elevation="10dp"
-        app:cardCornerRadius="10dp"
-        android:id="@+id/details">
-
+        app:cardCornerRadius="10dp">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="250dp">
+            android:layout_height="match_parent"
+            android:id="@+id/details">
 
             <com.leo.simplearcloader.SimpleArcLoader
                 android:visibility="visible"
@@ -157,7 +158,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Global Stats"
+                        android:text="India Stats"
                         android:textAllCaps="true"
                         android:textSize="28sp"
                         android:textStyle="bold"
@@ -227,41 +228,6 @@
                             android:layout_height="wrap_content"
                             android:text="0"
                             android:id="@+id/tvRecovered"
-                            android:textAlignment="textEnd"
-                            android:textSize="18sp"
-                            android:textColor="@color/color_one"
-                            android:textStyle="bold"
-                            android:fontFamily="sans-serif-light"
-                            android:layout_alignParentRight="true"/>
-
-                    </RelativeLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/color_two"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Critical"
-                            android:textSize="18sp"/>
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:id="@+id/tvCritical"
                             android:textAlignment="textEnd"
                             android:textSize="18sp"
                             android:textColor="@color/color_one"
@@ -410,47 +376,6 @@
                             android:layout_alignParentRight="true"/>
 
                     </RelativeLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/color_two"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp" />
-
-                    <RelativeLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginRight="25dp"
-                        android:layout_marginLeft="25dp"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginBottom="10dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:fontFamily="sans-serif-light"
-                            android:text="Affected Countries"
-                            android:textSize="18sp"/>
-
-                        <TextView
-                            android:layout_width="fill_parent"
-                            android:layout_height="wrap_content"
-                            android:text="0"
-                            android:id="@+id/tvAffectedCountries"
-                            android:textAlignment="textEnd"
-                            android:textSize="18sp"
-                            android:textColor="@color/color_one"
-                            android:textStyle="bold"
-                            android:fontFamily="sans-serif-light"
-                            android:layout_alignParentRight="true"/>
-
-                    </RelativeLayout>
-                    <View
-                        android:layout_width="match_parent"
-                        android:layout_height="1dp"
-                        android:background="@color/color_two"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp" />
 
 
                 </LinearLayout>
@@ -463,41 +388,5 @@
 
 
     </androidx.cardview.widget.CardView>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_below="@+id/details"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="20dp">
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Track In\n India"
-            android:background="@drawable/round_btn"
-            android:textColor="@color/color_white"
-            android:textSize="14sp"
-            android:layout_marginRight="10dp"
-            android:onClick="goTrackIndia"/>
-
-        <Button
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@drawable/round_btn"
-            android:text="Track In\n Other Countries"
-            android:textColor="@color/color_white"
-            android:layout_marginLeft="10dp"
-            android:textSize="14sp"
-            android:onClick="goTrackOtherCountries"/>
-
-    </LinearLayout>
 
 </RelativeLayout>
