@@ -43,4 +43,8 @@ dependencies {
     // Arc loader library
     implementation 'com.leo.simplearcloader:simplearcloader:1.0.+'
 
+    // Glide library a image loading and caching library
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
 }
