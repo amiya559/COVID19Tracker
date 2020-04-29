@@ -25,7 +25,7 @@ import org.json.JSONObject;
 
 public class MainActivity extends AppCompatActivity {
 
-    // Connecting XML file with its corresponding JAVA file by initializing the object
+    // Create the object of TextView, ScrollView and PieChart classes.
     TextView tvCases,tvRecovered,tvCritical,tvActive,tvTodayCases,tvTotalDeaths,tvTodayDeaths,tvAffectedCountries;
     SimpleArcLoader simpleArcLoader;
     ScrollView scrollView;
@@ -36,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Link those objects with their respective id's that we have given in .XML file
         tvCases = findViewById(R.id.tvCases);
         tvRecovered = findViewById(R.id.tvRecovered);
         tvCritical = findViewById(R.id.tvCritical);
@@ -49,22 +50,31 @@ public class MainActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollStats);
         pieChart = findViewById(R.id.piechart);
 
+        // Creating a method fetchdata()
         fetchdata();
     }
 
     private void fetchdata() {
 
+        // Create a String request using Volley Library
         String url = "https://corona.lmao.ninja/v2/all";
 
-        simpleArcLoader.start();
+        //simpleArcLoader.start();
 
         StringRequest request = new StringRequest(Request.Method.GET, url,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
+                        // Handle the JSON object and keep it inside try and catch
                         try {
+
+                            // Creating object of JSONObject
                             JSONObject jsonObject = new JSONObject(response.toString());
 
+                            // Set the data in text view which are available in JSON format
+                            // Note that the parameter inside the getString() must match
+                            // with the name given in JSON format
                             tvCases.setText(jsonObject.getString("cases"));
                             tvRecovered.setText(jsonObject.getString("recovered"));
                             tvCritical.setText(jsonObject.getString("critical"));
@@ -74,11 +84,13 @@ public class MainActivity extends AppCompatActivity {
                             tvTodayDeaths.setText(jsonObject.getString("todayDeaths"));
                             tvAffectedCountries.setText(jsonObject.getString("affectedCountries"));
 
-
+                            // Set the data and color in pie chart
                             pieChart.addPieSlice(new PieModel("Cases", Integer.parseInt(tvCases.getText().toString()), Color.parseColor("#FFA726")));
                             pieChart.addPieSlice(new PieModel("Recovered",Integer.parseInt(tvRecovered.getText().toString()), Color.parseColor("#66BB6A")));
                             pieChart.addPieSlice(new PieModel("Deaths",Integer.parseInt(tvTotalDeaths.getText().toString()), Color.parseColor("#EF5350")));
                             pieChart.addPieSlice(new PieModel("Active",Integer.parseInt(tvActive.getText().toString()), Color.parseColor("#29B6F6")));
+
+                            // To animate the pie chart
                             pieChart.startAnimation();
 
                             simpleArcLoader.stop();
@@ -104,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 simpleArcLoader.stop();
                 simpleArcLoader.setVisibility(View.GONE);
                 scrollView.setVisibility(View.VISIBLE);
+                //Show a Toast message if any error occurred
                 Toast.makeText(MainActivity.this, error.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
@@ -112,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         requestQueue.add(request);
 
     }
+
 
     public void goTrackIndia(View view) {
 

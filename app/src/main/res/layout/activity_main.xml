@@ -7,6 +7,7 @@
     android:background="@color/color_white"
     tools:context=".MainActivity">
 
+    <!-- Card view for displaying the Pie chart and details of pie chart -->
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewGraph"
         android:layout_width="match_parent"
@@ -17,11 +18,16 @@
         android:elevation="10dp"
         app:cardCornerRadius="10dp">
 
+
+        <!--Linear layout to display pie chart and details of pie chart-->
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal"
             android:weightSum="2">
+
+            <!--Pie chart to display the data-->
 
             <org.eazegraph.lib.charts.PieChart
                 xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -36,6 +42,8 @@
 
                 />
 
+            <!--Creating another linear layout to display pie chart details -->
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
@@ -44,14 +52,22 @@
                 android:orientation="vertical"
                 android:gravity="center_vertical"
                 >
+
+                <!--Linear layout to display Total Cases-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical">
+
+                    <!--View to display the yellow color icon-->
+
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
                         android:background="@color/cases"/>
+                    <!--Text view to display total cases text -->
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -59,15 +75,25 @@
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
+
+                <!--Linear layout to display Recovered-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
+
+                    <!--View to display the green color icon-->
+
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
                         android:background="@color/recovered"/>
+
+                    <!--Text view to display recovered text -->
+
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -75,15 +101,24 @@
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
+
+                <!--Linear layout to display Deaths-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
+
+                    <!--View to display the red color icon-->
+
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
                         android:background="@color/deaths"/>
+
+                    <!--Text view to display Death text -->
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -91,15 +126,24 @@
                         android:paddingLeft="10dp"/>
 
                 </LinearLayout>
+
+                <!--Linear layout to display Active-->
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="15dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginTop="5dp">
+
+                    <!--View to display the blue color icon-->
+
                     <View
                         android:layout_width="15dp"
                         android:layout_height="match_parent"
                         android:background="@color/active"/>
+
+                    <!--Text view to display Active text -->
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -115,7 +159,12 @@
 
 
 
+
     </androidx.cardview.widget.CardView>
+
+
+    <!-- Another Card view for displaying Global stats and details of global stats -->
+
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -124,17 +173,20 @@
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
         android:layout_marginTop="10dp"
+        android:layout_marginBottom="20dp"
         android:elevation="10dp"
         app:cardCornerRadius="10dp"
         android:id="@+id/details">
 
+        <!--Relative layout to display Global stats and details of global stats-->
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="250dp">
 
+
             <com.leo.simplearcloader.SimpleArcLoader
-                android:visibility="visible"
+                android:visibility="gone"
                 android:id="@+id/loader"
                 android:layout_centerInParent="true"
                 android:layout_width="60dp"
@@ -143,16 +195,20 @@
                 >
             </com.leo.simplearcloader.SimpleArcLoader>
 
+            <!--Scroll view to display all the data-->
+
             <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:id="@+id/scrollStats"
-                android:visibility="gone">
+                android:visibility="visible">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
+
+                    <!--Text view to display Global stats-->
 
                     <TextView
                         android:layout_width="match_parent"
@@ -163,6 +219,8 @@
                         android:textStyle="bold"
                         android:layout_marginLeft="25dp"
                         android:layout_marginTop="20dp"/>
+
+                    <!--View to display the line-->
 
                     <View
                         android:layout_width="match_parent"
@@ -180,12 +238,18 @@
                         android:layout_marginTop="10dp"
                         android:layout_marginBottom="10dp">
 
+                        <!--Text view to display Cases-->
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-light"
                             android:text="Cases"
                             android:textSize="18sp"/>
+
+                        <!--Text view to display the updated number when data will
+                        fetch from the API. For now default set to 0
+                       -->
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -200,6 +264,9 @@
                             android:layout_alignParentRight="true"/>
 
                     </RelativeLayout>
+
+                    <!--View to display the line-->
+
                     <View
                         android:layout_width="match_parent"
                         android:layout_height="1dp"
@@ -221,6 +288,10 @@
                             android:fontFamily="sans-serif-light"
                             android:text="Recovered"
                             android:textSize="18sp"/>
+
+                        <!--Text view to display the updated number when data will
+                        fetch from the API. For now default set to 0
+                       -->
 
                         <TextView
                             android:layout_width="fill_parent"
@@ -257,6 +328,9 @@
                             android:text="Critical"
                             android:textSize="18sp"/>
 
+                        <!--Text view to display the updated number when data will
+                        fetch from the API. For now default set to 0
+                       -->
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -291,7 +365,9 @@
                             android:fontFamily="sans-serif-light"
                             android:text="Active"
                             android:textSize="18sp"/>
-
+                        <!--Text view to display the updated number when data will
+                                                fetch from the API. For now default set to 0
+                                               -->
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
@@ -431,7 +507,9 @@
                             android:fontFamily="sans-serif-light"
                             android:text="Affected Countries"
                             android:textSize="18sp"/>
-
+                        <!--Text view to display the updated number when data will
+                                                fetch from the API. For now default set to 0
+                                               -->
                         <TextView
                             android:layout_width="fill_parent"
                             android:layout_height="wrap_content"
